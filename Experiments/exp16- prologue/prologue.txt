@@ -1,0 +1,13 @@
+% Base case: sum of numbers up to 0 is 0
+sum_up_to(0, 0).
+
+% Recursive step
+sum_up_to(N, Sum) :-
+    N > 0,
+    N1 is N - 1,
+    sum_up_to(N1, SubSum),
+    Sum is N + SubSum.
+
+% Example Query:
+% ?- sum_up_to(5, Result).
+% Output: Result = 15.
