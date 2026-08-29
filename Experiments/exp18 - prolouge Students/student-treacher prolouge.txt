@@ -1,0 +1,20 @@
+% Facts: teacher(TeacherName, SubjectCode)
+teacher(prof_miller, cs101).
+teacher(prof_davis, cs102).
+teacher(dr_taylor, math201).
+
+% Facts: enrolled(StudentName, SubjectCode)
+enrolled(alex, cs101).
+enrolled(alex, math201).
+enrolled(sarah, cs102).
+enrolled(emily, cs101).
+
+% Rule 1: Find which teacher teaches a student
+student_teacher(Student, Teacher) :-
+    enrolled(Student, Code),
+    teacher(Teacher, Code).
+
+% Rule 2: Find all students of a given teacher
+teacher_students(Teacher, Student) :-
+    teacher(Teacher, Code),
+    enrolled(Student, Code).

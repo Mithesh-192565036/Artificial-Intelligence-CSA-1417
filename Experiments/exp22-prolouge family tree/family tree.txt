@@ -1,0 +1,44 @@
+male(john).
+male(bob).
+male(jim).
+male(david).
+
+female(mary).
+female(ann).
+female(lisa).
+
+parent(john, bob).
+parent(mary, bob).
+parent(john, ann).
+parent(mary, ann).
+parent(bob, lisa).
+parent(bob, jim).
+parent(david, john).
+
+father(X, Y) :-
+    parent(X, Y),
+    male(X).
+
+mother(X, Y) :-
+    parent(X, Y),
+    female(X).
+
+sibling(X, Y) :-
+    parent(P, X),
+    parent(P, Y),
+    X \= Y.
+
+grandparent(X, Y) :-
+    parent(X, Z),
+    parent(Z, Y).
+
+uncle(X, Y) :-
+    parent(P, Y),
+    sibling(X, P),
+    male(X).
+
+ancestor(X, Y) :-
+    parent(X, Y).
+ancestor(X, Y) :-
+    parent(X, Z),
+    ancestor(Z, Y).

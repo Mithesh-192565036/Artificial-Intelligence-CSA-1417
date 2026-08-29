@@ -1,0 +1,18 @@
+% Facts: planet(Name, Type, DistanceFromSunInAU, Moons)
+planet(mercury, terrestrial, 0.39, 0).
+planet(venus, terrestrial, 0.72, 0).
+planet(earth, terrestrial, 1.00, 1).
+planet(mars, terrestrial, 1.52, 2).
+planet(jupiter, gas_giant, 5.20, 95).
+planet(saturn, gas_giant, 9.58, 146).
+planet(uranus, ice_giant, 19.22, 28).
+planet(neptune, ice_giant, 30.05, 16).
+
+% Rule 1: Find planets of a specific type
+planets_by_type(Type, Name) :-
+    planet(Name, Type, _, _).
+
+% Rule 2: Find planets with more than a given number of moons
+has_moons_greater_than(MinMoons, Name) :-
+    planet(Name, _, _, Moons),
+    Moons > MinMoons.

@@ -1,0 +1,25 @@
+bird(eagle).
+bird(sparrow).
+bird(pigeon).
+bird(penguin).
+bird(ostrich).
+
+flightless(penguin).
+flightless(ostrich).
+
+can_fly(X) :-
+    bird(X),
+    \+ flightless(X).
+
+check_fly(X) :-
+    can_fly(X),
+    write(X), write(' can fly.'), nl.
+
+check_fly(X) :-
+    bird(X),
+    flightless(X),
+    write(X), write(' cannot fly.'), nl.
+
+check_fly(X) :-
+    \+ bird(X),
+    write(X), write(' is not a bird in the database.'), nl.

@@ -1,0 +1,13 @@
+% Facts: person(Name, DateOfBirth(Day, Month, Year))
+person(john_doe, dob(15, may, 1995)).
+person(jane_smith, dob(22, august, 1998)).
+person(alice_brown, dob(5, january, 2001)).
+person(bob_white, dob(12, may, 1995)).
+
+% Rule 1: Find people born in a specific year
+born_in_year(Name, Year) :-
+    person(Name, dob(_, _, Year)).
+
+% Rule 2: Find people born in a specific month
+born_in_month(Name, Month) :-
+    person(Name, dob(_, Month, _)).
